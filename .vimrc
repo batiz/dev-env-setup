@@ -10,14 +10,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -31,6 +23,16 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'othree/html5.vim'
+Plugin 'wincent/command-t'
+Plugin 'mileszs/ack.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 set nu
 set laststatus=2
@@ -71,6 +73,10 @@ nmap <leader>l :call Flake8ColumnLength()<CR>
 
 " YouCompleteMe definition
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Perfoce edit mode
+nmap <leader>e :!p4 edit %<CR>
+nmap <leader>r :!p4 revert %<CR>
 
 " Comment Toggle Uses NERDCommenter
 nmap \\ <leader>c<space>
@@ -128,5 +134,11 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+"Ack Plugin shortcut
+nmap <leader>a :Ack ""<Left>
+
+"Ack on current cursor word
+nmap <leader>A :Ack <C-r><C-w><CR>
 
 color jellybeans
