@@ -25,6 +25,7 @@ Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'othree/html5.vim'
 Plugin 'wincent/command-t'
 Plugin 'mileszs/ack.vim'
+Plugin 'sjbach/lusty'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
