@@ -142,4 +142,10 @@ nmap <leader>a :Ack ""<Left>
 "Ack on current cursor word
 nmap <leader>A :Ack <C-r><C-w><CR>
 
+"Lusty hide errors
+set hidden
+
+"Lusty load in memory before LustyBufferGrep
+nmap <leader>lg :bufdo edit<CR>:LustyBufferGrep<CR>
+
 color jellybeans
