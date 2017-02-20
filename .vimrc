@@ -75,10 +75,6 @@ nmap <leader>l :call Flake8ColumnLength()<CR>
 " YouCompleteMe definition
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" Perfoce edit mode
-nmap <leader>e :!p4 edit %<CR>
-nmap <leader>r :!p4 revert %<CR>
-
 " Comment Toggle Uses NERDCommenter
 nmap \\ <leader>c<space>
 xmap \\ <leader>c<space>
