@@ -132,6 +132,9 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+"Command-t filter some file types
+let g:CommandTWildIgnore=&wildignore . ",*.pyc"
+
 "Ack Plugin shortcut
 nmap <leader>a :Ack ""<Left>
 
