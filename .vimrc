@@ -27,6 +27,7 @@ Plugin 'wincent/command-t'
 Plugin 'mileszs/ack.vim'
 Plugin 'sjbach/lusty'
 Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -66,6 +67,9 @@ let g:syntastic_python_checkers = ['flake8']
 
 " Syntastic javascript
 let g:syntastic_javascript_checkers = ['gjslint']
+
+" Syntastic golang
+let g:syntastic_go_checkers = ['golint']
 
 function Flake8ColumnLength()
 	let g:syntastic_python_flake8_args='--max-line-length=120'
