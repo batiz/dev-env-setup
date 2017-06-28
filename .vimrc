@@ -28,6 +28,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'sjbach/lusty'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
+Plugin 'tpope/tpope-vim-abolish'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
