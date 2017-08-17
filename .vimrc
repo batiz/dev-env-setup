@@ -29,6 +29,7 @@ Plugin 'sjbach/lusty'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/tpope-vim-abolish'
+Plugin 'scrooloose/nerdtree'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -152,5 +153,9 @@ set hidden
 
 "Lusty load in memory before LustyBufferGrep
 nmap <leader>lg :bufdo edit<CR>:LustyBufferGrep<CR>
+
+"NERDTree Toggle
+nmap <leader>nt :NERDTreeToggle<CR>
+
 
 color jellybeans
