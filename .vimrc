@@ -150,7 +150,7 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 "Command-t filter some file types
-let g:CommandTWildIgnore=&wildignore . ",*.pyc"
+let g:CommandTWildIgnore=&wildignore . ",*.pyc,*.a"
 let g:CommandTMaxFiles=200000
 
 
