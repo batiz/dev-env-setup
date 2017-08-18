@@ -1,3 +1,11 @@
+set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
 set nocompatible              " required
 filetype off                  " required
 
@@ -10,6 +18,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -30,9 +41,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'scrooloose/nerdtree'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-
+Plugin 'qpkorr/vim-bufkill'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,7 +96,8 @@ nmap \\ <leader>c<space>
 xmap \\ <leader>c<space>
 
 " Undo three
-nnoremap <F5> :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
+nmap <leader>u :GundoToggle<CR>
 
 " Spell checking english
 function SpellCheckToggle()
@@ -141,6 +151,8 @@ map g# <Plug>(incsearch-nohl-g#)
 
 "Command-t filter some file types
 let g:CommandTWildIgnore=&wildignore . ",*.pyc"
+let g:CommandTMaxFiles=200000
+
 
 "Ack Plugin shortcut
 nmap <leader>a :Ack ""<Left>
