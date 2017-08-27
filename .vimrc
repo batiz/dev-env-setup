@@ -1,4 +1,5 @@
-set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set nobackup
+set noswapfile
 
 " Always show statusline
 set laststatus=2
@@ -9,43 +10,40 @@ set t_Co=256
 set nocompatible              " required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+Plug 'junegunn/vim-plug'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sjl/gundo.vim'
+Plug 'godlygeek/tabular'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'othree/html5.vim'
+Plug 'wincent/command-t', {
+    \   'do': 'rvm use system && rake make'
+    \ }
+Plug 'mileszs/ack.vim'
+Plug 'sjbach/lusty'
+Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'qpkorr/vim-bufkill'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'sjl/gundo.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
-Plugin 'othree/html5.vim'
-Plugin 'wincent/command-t'
-Plugin 'mileszs/ack.vim'
-Plugin 'sjbach/lusty'
-Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
-Plugin 'tpope/tpope-vim-abolish'
-Plugin 'scrooloose/nerdtree'
-Plugin 'qpkorr/vim-bufkill'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
+filetype plugin on
 
 
 set nu
@@ -61,8 +59,6 @@ let g:airline_powerline_fonts = 1
 
 
 let mapleader=","
-
-let g:ycm_autoclose_preview_window_after_completion=1
 
 " Syntastic options
 set statusline+=%#warningmsg#
@@ -82,14 +78,6 @@ let g:syntastic_javascript_checkers = ['gjslint']
 " Syntastic golang
 let g:syntastic_go_checkers = ['golint']
 
-function Flake8ColumnLength()
-	let g:syntastic_python_flake8_args='--max-line-length=120'
-	edit
-endfunction
-nmap <leader>l :call Flake8ColumnLength()<CR>
-
-" YouCompleteMe definition
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Comment Toggle Uses NERDCommenter
 nmap \\ <leader>c<space>
@@ -114,31 +102,10 @@ function SpellCheckToggle()
 endfunction
 nmap <leader>s :call SpellCheckToggle()<CR>
 
-" Mode paste toggle
-function ModePasteToggle()
-	if !exists("b:mode_paste_is_on")
-		let b:mode_paste_is_on = 0
-	endif
-	if b:mode_paste_is_on
-		set nopaste
-		set noinsertmode
-		let b:mode_paste_is_on = 0
-	else
-		set paste
-		set insertmode
-		let b:mode_paste_is_on = 1
-	endif
-endfunction
-nmap <leader>p :call ModePasteToggle()<CR>
-
 "Incsearch mapping
 map / <Plug>(incsearch-easymotion-/)
 map ? <Plug>(incsearch-easymotion-?)
 map g/ <Plug>(incsearch-easymotion-stay)
-
-"map /  <Plug>(incsearch-forward)
-"map ?  <Plug>(incsearch-backward)
-"map g/ <Plug>(incsearch-stay)
 
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
@@ -166,8 +133,29 @@ set hidden
 "Lusty load in memory before LustyBufferGrep
 nmap <leader>lg :bufdo edit<CR>:LustyBufferGrep<CR>
 
-"NERDTree Toggle
-nmap <leader>nt :NERDTreeToggle<CR>
+"VimFiler
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_define_wrapper_commands = 1
+let g:vimfiler_tree_leaf_icon = '¦'
+let g:vimfiler_tree_opened_icon = '▼'
+let g:vimfiler_tree_closed_icon = '▷'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_readonly_file_icon = '*'
+let g:vimfiler_marked_file_icon = '√'
+call vimfiler#custom#profile('default', 'context', {
+      \ 'safe' : 0,
+      \ 'explorer' : 1,
+      \ 'toggle' : 1,
+      \ 'columns' : 'type',
+      \ 'status' : 1,
+      \ })
 
+nmap <leader>f :VimFilerExplore<CR>
+nmap <leader>ff :VimFilerExplore -find<CR>
+
+"NeoComplete
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
 
 color jellybeans
