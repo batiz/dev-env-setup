@@ -40,7 +40,10 @@ Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neossh.vim'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'luochen1990/rainbow'
+Plug 'qpkorr/vim-renamer'
 
 call plug#end()
 filetype plugin on
@@ -68,6 +71,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+
+let g:syntastic_mode_map = {
+	\ "mode": "passive",
+	\ "active_filetypes": [],
+	\ "passive_filetypes": [] }
 
 " Syntastic python
 let g:syntastic_python_checkers = ['flake8']
@@ -120,6 +128,10 @@ map g# <Plug>(incsearch-nohl-g#)
 let g:CommandTWildIgnore=&wildignore . ",*.pyc,*.a"
 let g:CommandTMaxFiles=200000
 
+"Ack use ag if installed
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 "Ack Plugin shortcut
 nmap <leader>a :Ack ""<Left>
@@ -155,7 +167,15 @@ nmap <leader>ff :VimFilerExplore -find<CR>
 
 "NeoComplete
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_close_preview = 1
+
+"Rainbow
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+	\ 'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\}
+
+autocmd FileType go setlocal omnifunc=gocomplete#Complete
 
 color jellybeans
