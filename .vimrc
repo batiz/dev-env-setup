@@ -42,7 +42,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neossh.vim'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'luochen1990/rainbow'
+Plug 'kien/rainbow_parentheses.vim'
 Plug 'qpkorr/vim-renamer'
 
 call plug#end()
@@ -171,11 +171,11 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_close_preview = 1
 
 "Rainbow
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-	\ 'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-\}
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
-autocmd FileType go setlocal omnifunc=gocomplete#Complete
+let g:rbpt_max = 14
 
 color jellybeans
