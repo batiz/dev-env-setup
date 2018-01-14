@@ -44,6 +44,9 @@ Plug 'Shougo/neossh.vim'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'qpkorr/vim-renamer'
+Plug 'davidhalter/jedi-vim'
+Plug 'tpope/vim-fireplace'
+Plug 'cjrh/vim-conda'
 
 call plug#end()
 filetype plugin on
@@ -176,6 +179,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-let g:rbpt_max = 14
+let g:rbpt_max = 16
 
 color jellybeans
