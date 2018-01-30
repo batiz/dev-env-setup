@@ -47,6 +47,8 @@ Plug 'qpkorr/vim-renamer'
 Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-fireplace'
 Plug 'cjrh/vim-conda'
+Plug 'MattesGroeger/vim-bookmarks'
+
 
 call plug#end()
 filetype plugin on
@@ -180,5 +182,13 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 let g:rbpt_max = 16
+
+"Vim-Bookmark
+call unite#custom#profile('source/vim_bookmarks', 'context', {
+	\   'winheight': 13,
+	\   'direction': 'botright',
+	\   'start_insert': 0,
+	\ })
+
 
 color jellybeans
