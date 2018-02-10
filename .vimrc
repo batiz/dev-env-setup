@@ -25,8 +25,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'othree/html5.vim'
-Plug 'wincent/command-t', {
-    \   'do': 'rvm use system && rake make'
+Plug 'wincent/command-t',  {
+    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
     \ }
 Plug 'mileszs/ack.vim'
 Plug 'sjbach/lusty'
