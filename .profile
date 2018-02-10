@@ -24,11 +24,6 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export GOPATH="$HOME/go"
 PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-PATH="$PATH:$HOME/.rvm/bin"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 export TERM="screen-256color"
 
 # Clean PATH
