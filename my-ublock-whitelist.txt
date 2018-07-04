@@ -1,0 +1,15 @@
+about-scheme
+calendar.google.com
+chrome-extension-scheme
+chrome-scheme
+circleci.com
+github.com
+inbox.google.com
+moz-extension-scheme
+opera-scheme
+sisu-agile.atlassian.net
+sisu.sh
+soundcloud.com
+vivaldi-scheme
+web.whatsapp.com
+wyciwyg-scheme
