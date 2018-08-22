@@ -46,6 +46,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'snoe/clj-refactor.nvim'
+Plug 'markwoodhall/vim-figwheel'
+Plug 'vim-scripts/paredit.vim'
 
 call plug#end()
 filetype plugin on
