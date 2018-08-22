@@ -16,7 +16,7 @@ Plug 'junegunn/vim-plug'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'nanotech/jellybeans.vim'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim'
 Plug 'godlygeek/tabular'
@@ -63,28 +63,24 @@ let g:airline_powerline_fonts = 1
 
 let mapleader=","
 
-" Syntastic options
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-let g:syntastic_mode_map = {
-	\ "mode": "active",
-	\ "active_filetypes": [],
-	\ "passive_filetypes": [] }
+" Ale options
 
 " Syntastic python
-let g:syntastic_python_checkers = ['flake8']
+let g:ale_linters = {
+\	'python': ['flake8'],
+\	'javascript': ['gjslint'],
+\	'go': ['gometalinter'],
+\	'yaml': ['yamllint']
+\}
 
-" Syntastic javascript
-let g:syntastic_javascript_checkers = ['gjslint']
-
-" Syntastic golang
-let g:syntastic_go_checkers = ['golint']
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+let g:ale_go_gometalinter_options = "--disable-all --enable=goimports --enable=golint
+\	--enable=varcheck --enable=unconvert
+\	--enable=deadcode --enable=ineffassign --enable=errcheck
+\	--enable=goconst --enable=vet
+\	--enable=megacheck
+\	--warn-unmatched-nolint"
 
 
 " Comment Toggle Uses NERDCommenter
@@ -125,12 +121,12 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 "Command-t filter some file types
-let g:CommandTWildIgnore=&wildignore . ",*.pyc,*.a"
+let g:CommandTWildIgnore=&wildignore . ",*.pyc,*.a,*.snap,*/vendor,*/dist"
 let g:CommandTMaxFiles=200000
 
 "Ack use ag if installed
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --path-to-ignore ~/.ignore'
 endif
 
 "Ack Plugin shortcut
