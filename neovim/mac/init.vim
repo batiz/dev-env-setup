@@ -73,7 +73,6 @@ let g:ale_linters = {
 \	'yaml': ['yamllint']
 \}
 
-let g:ale_open_list = 1
 let g:ale_go_gometalinter_options = "--disable-all --enable=goimports --enable=golint
 \	--enable=varcheck --enable=unconvert
 \	--enable=deadcode --enable=ineffassign --enable=errcheck
