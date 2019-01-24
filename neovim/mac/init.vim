@@ -46,6 +46,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'zchee/deoplete-clang'
+Plug 'rhysd/vim-clang-format'
 
 call plug#end()
 filetype plugin on
