@@ -45,6 +45,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'zchee/deoplete-clang'
 
 call plug#end()
 filetype plugin on
@@ -206,5 +207,9 @@ let g:vdebug_keymap = {
 
 "Gutentags
 let g:gutentags_cache_dir = '~/.vim/gutentags'
+
+"deoplete-clang
+let g:deoplete#sources#clang#libclang_path='/usr/local/opt/llvm/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header='/usr/local/opt/llvm/lib/clang'
 
 color jellybeans
