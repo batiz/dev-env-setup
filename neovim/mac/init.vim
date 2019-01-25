@@ -1,12 +1,3 @@
-set nobackup
-set noswapfile
-
-" Always show statusline
-set laststatus=2
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
 set nocompatible              " required
 filetype off                  " required
 
@@ -44,13 +35,16 @@ Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'zchee/deoplete-clang'
 Plug 'rhysd/vim-clang-format'
+Plug 'guns/xterm-color-table.vim'
 
 call plug#end()
 filetype plugin on
 
+set nobackup
+set noswapfile
 set nu
 set laststatus=2
 set backspace=2
@@ -167,12 +161,14 @@ let g:deoplete#enable_smart_case = 1
 autocmd CompleteDone * silent! pclose!
 
 "Rainbow
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
-let g:rbpt_max = 16
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorchid3', 'seagreen3', 'firebrick3'],
+\	'operators': '',
+\	'ctermfgs': [20, 91, 49, 160],
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\}
 
 "Vim-Bookmark
 call unite#custom#profile('source/vim_bookmarks', 'context', {
