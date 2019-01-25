@@ -68,8 +68,6 @@ let g:airline_powerline_fonts = 1
 let mapleader=","
 
 " Ale options
-
-" Syntastic python
 let g:ale_linters = {
 \	'python': ['flake8'],
 \	'javascript': ['gjslint'],
@@ -163,10 +161,10 @@ call vimfiler#custom#profile('default', 'context', {
 nmap <leader>f :VimFilerExplore<CR>
 nmap <leader>ff :VimFilerExplore -find<CR>
 
-"NeoComplete
+"Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_auto_close_preview = 1
+autocmd CompleteDone * silent! pclose!
 
 "Rainbow
 au VimEnter * RainbowParenthesesToggle
