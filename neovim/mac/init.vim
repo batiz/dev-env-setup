@@ -27,18 +27,21 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'davidhalter/jedi-vim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'vim-vdebug/vdebug'
-Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
+Plug 'kristijanhusak/deoplete-phpactor'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'luochen1990/rainbow'
 Plug 'zchee/deoplete-clang'
 Plug 'rhysd/vim-clang-format'
 Plug 'guns/xterm-color-table.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 call plug#end()
 filetype plugin on
@@ -160,6 +163,10 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 autocmd CompleteDone * silent! pclose!
 
+"neosnippet
+let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_snipmate_compatibility = 1
+
 "Rainbow
 
 let g:rainbow_active = 1
@@ -200,11 +207,23 @@ let g:vdebug_keymap = {
 \    "eval_visual" : "<Leader>e",
 \}
 
-"Gutentags
-let g:gutentags_cache_dir = '~/.vim/gutentags'
-
 "deoplete-clang
-let g:deoplete#sources#clang#libclang_path='/usr/local/opt/llvm/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header='/usr/local/opt/llvm/lib/clang'
+let g:deoplete#sources#clang#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang'
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 color jellybeans
