@@ -36,12 +36,15 @@ Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 Plug 'kristijanhusak/deoplete-phpactor'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'luochen1990/rainbow'
 Plug 'zchee/deoplete-clang'
 Plug 'rhysd/vim-clang-format'
 Plug 'guns/xterm-color-table.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 
 call plug#end()
 filetype plugin on
@@ -55,11 +58,11 @@ set t_Co=256
 set clipboard=unnamedplus
 syntax on
 
-set shell=/usr/local/bin/tmux
-
 " Airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+set shell=/usr/local/bin/zsh
 
 
 let mapleader=","
@@ -76,7 +79,6 @@ let g:ale_go_gometalinter_options = "--disable-all --enable=goimports --enable=g
 \	--enable=varcheck --enable=unconvert
 \	--enable=deadcode --enable=ineffassign --enable=errcheck
 \	--enable=goconst --enable=vet
-\	--enable=megacheck
 \	--warn-unmatched-nolint"
 
 
@@ -163,10 +165,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 autocmd CompleteDone * silent! pclose!
 
-"neosnippet
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#enable_snipmate_compatibility = 1
-
 "Rainbow
 
 let g:rainbow_active = 1
@@ -211,7 +209,16 @@ let g:vdebug_keymap = {
 let g:deoplete#sources#clang#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
 let g:deoplete#sources#clang#clang_header='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang'
 
-" Plugin key-mappings.
+"deoplete-ternjs
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ ]
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#docs = 1
+let g:deoplete#sources#ternjs#case_insensitive = 1
+
+" neosnippet
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -225,5 +232,20 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" enable gtags module
+let g:gutentags_modules = ['ctags', 'gtags_cscope']
+
+" config project root markers.
+let g:gutentags_project_root = ['.root']
+
+" generate datebases in my cache directory, prevent gtags files polluting my project
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+" change focus to quickfix window after search (optional).
+let g:gutentags_plus_switch = 1
 
 color jellybeans
