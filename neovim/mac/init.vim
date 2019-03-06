@@ -71,15 +71,11 @@ let mapleader=","
 let g:ale_linters = {
 \	'python': ['flake8'],
 \	'javascript': ['gjslint'],
-\	'go': ['gometalinter'],
+\	'go': ['golangci-lint'],
 \	'yaml': ['yamllint']
 \}
 
-let g:ale_go_gometalinter_options = "--disable-all --enable=goimports --enable=golint
-\	--enable=varcheck --enable=unconvert
-\	--enable=deadcode --enable=ineffassign --enable=errcheck
-\	--enable=goconst --enable=vet
-\	--warn-unmatched-nolint"
+let g:ale_go_golangci_lint_options=''
 
 
 " Comment Toggle Uses NERDCommenter
