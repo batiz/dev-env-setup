@@ -45,6 +45,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
+Plug 'junegunn/gv.vim'
 
 call plug#end()
 filetype plugin on
@@ -70,7 +71,7 @@ let mapleader=","
 " Ale options
 let g:ale_linters = {
 \	'python': ['flake8'],
-\	'javascript': ['gjslint'],
+\	'javascript': ['eslint'],
 \	'go': ['golangci-lint'],
 \	'yaml': ['yamllint']
 \}
@@ -167,7 +168,7 @@ let g:rainbow_active = 1
 let g:rainbow_conf = {
 \	'guifgs': ['royalblue3', 'darkorchid3', 'seagreen3', 'firebrick3'],
 \	'operators': '',
-\	'ctermfgs': [20, 91, 49, 160],
+\	'ctermfgs': [27, 127, 49, 160],
 \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
 \}
 
